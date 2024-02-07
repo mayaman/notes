@@ -1,15 +1,15 @@
-const adj = ["joyful", "synthetic", "cute", "potent", "youthful", "comfortable", "complex", "layered", "forbidden", "lush", "bewitching", "splurge-worthy", "cutesy", "heavenly", "timeless", "modern", "dark", "decadent", "graceful", "complex",  "heavy", "warm", "subtle", "girly", "pretty", "photorealistic", "delicious", "dainty", "creamy", "delicate", "soft", "familiar", "comforting", "grandma-ish", "simple", "soapy", "tumblr/myspace", "fragrant", "seductive", "sultry", "zesty", "luscious", "juicy", "lavish", "clean", "green", "lovely", "gentle", "classy", "charming", "sunny", "sour", "musky", "sexy", "strong", "straightforward", "pleasant", "powdery", "delectable", "smooth", "rich", "senses-tingling", "mouthwatering", "pure", "lavish", "gourmand", "light", "floral", "sparkly", "captivating", "luxurious", "dark", "intriguing", "luscious", "unique", "mysterious", "radiant", "delicate", "luminous", "groundbreaking", "powdery", "sweet", "fun", "sugary", "fresh", "deep", "feminine", "flirty", "cozy", "classic", "vibrant"];
-const adj_an = ["attractive", "earthy", "elegant", "innocent", "intoxicating", "easy", "enchanting", "exquisite", "erotic", "ethereal", "opulent", "inoffensive", "aquatic", "effervescent", "essential", "enveloping", "airy", "addictive", "innovative"];
+const adj = ["gentle", "crisp", "spiritual", "sophisticated", "fantastic", "chic", "sharp", "joyful", "synthetic", "cute", "potent", "youthful", "comfortable", "complex", "layered", "forbidden", "lush", "bewitching", "splurge-worthy", "cutesy", "heavenly", "timeless", "modern", "dark", "decadent", "graceful", "complex",  "heavy", "warm", "subtle", "girly", "pretty", "photorealistic", "delicious", "dainty", "creamy", "delicate", "soft", "familiar", "comforting", "grandma-ish", "simple", "soapy", "tumblr/myspace", "fragrant", "seductive", "sultry", "zesty", "luscious", "juicy", "lavish", "clean", "green", "lovely", "gentle", "classy", "charming", "sunny", "sour", "musky", "sexy", "strong", "straightforward", "pleasant", "powdery", "delectable", "smooth", "rich", "senses-tingling", "mouthwatering", "pure", "lavish", "gourmand", "light", "floral", "sparkly", "captivating", "luxurious", "dark", "intriguing", "luscious", "unique", "mysterious", "radiant", "delicate", "luminous", "groundbreaking", "powdery", "sweet", "fun", "sugary", "fresh", "deep", "feminine", "flirty", "cozy", "classic", "vibrant"];
+const adj_an = ["unisex", "herbaceous", "attractive", "earthy", "elegant", "innocent", "intoxicating", "easy", "enchanting", "exquisite", "erotic", "ethereal", "opulent", "inoffensive", "aquatic", "effervescent", "essential", "enveloping", "airy", "addictive", "innovative"];
 const adj_mixed = adj.concat(adj_an);
 const color = ["black", "pink", "blue", "green"];
-const adverb = ["charmingly", "mouthwateringly", "deliberately", "classically", "relatively", "surprisingly", "infinitely", "perfectly", "slightly", "indulgently", "easily", "somewhat", "artfully", "especially"]
-const noun = ["exoticism", "freedom", "treasure", "romance", "perfection", "pleasure", "glamour", "sensuality", "versatility", "beauty", "femininity", "elegance", "piquancy", "vulnerability", "memories", "surprise", "freshness", "nostalgia", "happiness", "indulgence", "delight", "delicacy", "depth", "brightness", "sentiment"];
+const adverb = ["wonderfully", "charmingly", "mouthwateringly", "deliberately", "classically", "relatively", "surprisingly", "infinitely", "perfectly", "slightly", "indulgently", "easily", "somewhat", "artfully", "especially"]
+const noun = ["charm", "essence", "complexity", "exoticism", "freedom", "treasure", "romance", "perfection", "pleasure", "glamour", "sensuality", "versatility", "beauty", "femininity", "elegance", "piquancy", "vulnerability", "memories", "surprise", "freshness", "nostalgia", "happiness", "indulgence", "delight", "delicacy", "depth", "brightness", "sentiment"];
 const nspc = [",", "...", "!", "-"];
-const season = ["winter", "spring", "fall", "summer"];
+const season = ["winter", "spring", "autumn", "summer"];
 const hour = ["2", "3", "4", "5", "6", "7", "8"];
-const thing = ["brand-new car", "holiday in the sun", "delicately beautiful insect", "majestic castle", "handful of caramel popcorn", "summer music festival", "butter cookie", "bouquet of wildflowers", "rainbow", "young girl’s unicorn", "bubble bath", "dryer sheet", "rose", "rose-colored curtain", "strawberry shortcake", "milkshake", "marshmallow", "white rabbit"];
-const punctuation = ["!", "!!", "!!!", "...", " :)", " <3", " <33"];
-const activity = ["entering a room where cookies have been baking all day", "drinking warm milk in porcelain mugs on a cold winter night", "enjoying a simple breakfast of a hot cup of foamed cappuccino", "waking up in a charming Italian town", "leaning against a great golden lion who is purring like a race car", "closing your eyes and dreaming that your spirit is at peace", "encountering scents drifting from a distant garden on the quiet breeze", "waiting for the languor of evening shadows", "rising up to meet the mysteries at hand for the evening", "eating cotton candy in a dream", "walking into a garden in full bloom", "entering a stage set with paper lanterns and parasols", "wearing a piece of contemporary art", "gorging yourself silly while swinging your red ruby slippers back and forth", "wearing something unapologetically luxurious", "being in love", "getting noticed when you walk into a room", "petting a mischievous tiger cub", "being tugged gently by summer winds", "spending afternoons under parasols", "drinking a cup of green tea in an upmarket equestrian store", "enjoying a date night out", "enjoying a rice krispie treat after school", "finding yourself in the appreciation of life", "introducing yourself to each colour of the sunset", "holding a glowing white blossom right in your hand", "falling head over heels", "buying a plane ticket straight to a tropical island", "lounging on satin sheets", "being fed ice cream", "licking whipped cream off of your fingers", "watching the sun set over the ocean"];
+const thing = ["summer in italy", "first kiss", "tube of chapstick", "brand-new car", "holiday in the sun", "delicately beautiful insect", "majestic castle", "handful of caramel popcorn", "summer music festival", "butter cookie", "bouquet of wildflowers", "rainbow", "bubble bath", "dryer sheet", "rose", "rose-colored curtain", "strawberry shortcake", "milkshake", "marshmallow", "white rabbit"];
+const punctuation = ["!", "!!", "!!!", "...", " :)", " <3", " <33", "!! :)"];
+const activity = ["being a classy and sexy woman walking the streets", "lighting your heart with nostalgic dreamy summer lanterns", "unfolding a hand-me-down wool blanket", "sitting on an antique loveseat near an invitingly large fireplace", "getting punched in the nostrils by a cinnamon incense stick", "sniffing your scarf after a fun night out", "venturing to the far grassy hills", "sitting with hello kitty figurines on my desk", "getting out of a warm bubble bath", "waking in expensive white bedding", "entering a room where cookies have been baking all day", "drinking warm milk in porcelain mugs on a cold winter night", "enjoying a simple breakfast of a hot cup of foamed cappuccino", "waking up in a charming Italian town", "leaning against a great golden lion who is purring like a race car", "closing your eyes and dreaming that your spirit is at peace", "encountering scents drifting from a distant garden on the quiet breeze", "waiting for the languor of evening shadows", "rising up to meet the mysteries at hand for the evening", "eating cotton candy in a dream", "walking into a garden in full bloom", "entering a stage set with paper lanterns and parasols", "wearing a piece of contemporary art", "gorging yourself silly while swinging your red ruby slippers back and forth", "wearing something unapologetically luxurious", "being in love", "getting noticed when you walk into a room", "petting a mischievous tiger cub", "being tugged gently by summer winds", "spending afternoons under parasols", "drinking a cup of green tea in an upmarket equestrian store", "enjoying a date night out", "enjoying a rice krispie treat after school", "finding yourself in the appreciation of life", "introducing yourself to each colour of the sunset", "holding a glowing white blossom right in your hand", "falling head over heels", "buying a plane ticket straight to a tropical island", "lounging on satin sheets", "being fed ice cream", "licking whipped cream off of your fingers", "watching the sun set over the ocean"];
 
 let reviewStructures = [
     ["it’s not", "adj_mixed", "or", "adj_mixed", "but it’s a nice smell"],
@@ -26,7 +26,7 @@ let reviewStructures = [
     ["the", "adj_mixed", "design of the bottle takes on a", "adj", "color"],
     ["this", "adj_mixed", "bottle is adorned with a", "adj", "color"],
     ["accentuated by a", "adj", "notes", "accord"], 
-    ["embodies the essence of Parisian style"],
+    ["embodies the", "noun", "of Parisian style"],
     ["adverb", "blends the", "noun", "of a", "adj", ",", "adj_mixed", "notes", "with the", "adj_mixed", "noun", "of a", "adj", ",", "adj_mixed", "notes", "accord"],
     ["a", "adj", "scent between", "noun", "and", "noun"],
     ["i still have my bottle from back then, it just smells like", "noun", ",", "noun", "girl era !!"],
@@ -35,7 +35,7 @@ let reviewStructures = [
     ["noun", "in a bottle"],
     ["it’s not very", "adj_mixed", "on me, but it’s there"],
     ["this", "adj_mixed", "adj_mixed", "adj_mixed", "scent enveloped me"],
-    ["a", "adj_mixed", "somewhat", "adj_mixed", "notes"],
+    ["a", "adj", "somewhat", "adj_mixed", "notes"],
     ["my favourite", "adj_mixed", "scent"],
     ["first whiff in warm weather:", "adj_mixed", "noun"],
     ["base notes after 1 hour:", "notes", ",", "notes", ",", "notes"],
@@ -59,15 +59,15 @@ let reviewStructures = [
     ["quite a linear", "notes", "notes", "and", "notes", "fragrance"],
     ["it opens as this", "notes", "smell"],
     ["straight up", "notes"],
-    ["smells like getting out of a warm bubble bath"],
-    ["still brings me back to the best times"],
+    ["smells like", "activity"],
+    ["still brings me back to", "adj_mixed", "times"],
     ["one of the most", "adj_mixed", "perfumes"],
     ["a little more", "adj_mixed", "than I was expecting"],
     ["this wears beautifully in the heat and can hold its own in humidity"],
     ["a perfect balance of", "adj_mixed", "and", "adj_mixed"],
     ["adverb", "unisex"],
     ["adj_mixed", "smell of a", "thing"],
-    ["this is distinctly", "adj_mixed", "noun", "-", "core"],
+    ["this is distinctly", "adj_mixed", "noun", "core"],
     ["feels", "adj_mixed", "and", "adj_mixed"],
     ["notes", "note stayed with me for a long time"],
     ["kind of like a", "thing"],
@@ -91,7 +91,7 @@ let reviewStructures = [
     ["gives the allure of being", "adj_mixed", ",", "adj_mixed", ",", "and", "adj_mixed"],
     ["leans more toward the", "adj_mixed", "side"],
     ["you can totally feel the", "notes"],
-    ["something a", "adj", "goth would wear"],
+    ["something a", "adj", "girl would wear"],
     ["adj_mixed", "as hell"],
     ["on a woman like myself, this is", "adj_mixed"],
     ["men love this, women love this"],
@@ -118,20 +118,34 @@ let reviewStructures = [
     ["EVERYONE LOVES THIS"],
     ["if I smelt this on a girl i’d collapse on the street"],
     ["a", "adj", "fragrance for a girl growing into womanhood"],
-    ["this is what i'd wear if i was a receptionist who has hello kitty figurines on my desk"],
+    ["this is what i'd wear if i was", "activity"],
     ["very", "adj_mixed", "scent trail"],
     ["this is for", "adj_mixed", "girls"],
     ["a few sprays are more than enough"],
     ["bottle is", "adj_mixed", "and totally matches the vibe"],
     ["it feels", "adj_mixed", "yet", "adj_mixed"],
-    ["a", "adj", "chapstick scent~ in a good way"],
+    ["a", "adj", "thing", "type of scent~ in a good way"],
     ["I feel", "adj_mixed", "whenever I wear this"],
-    ["soooooooo", "adj_mixed", ",", "so", "adj_mixed", ",", "so", "adj_mixed"],
+    ["soooooooo", "adj_mixed", "so", "adj_mixed", "so", "adj_mixed"],
     ["feeling like a girl having a vanilla latte and a slightly sweet croissant at a French cafe"],
     ["imagine a", "thing", "turning into", "noun"],
     ["men go crazy for this one"],
     ["exudes a", "adj", "noun"],
-    ["mmm", "adverb", "adj_mixed"]
+    ["mmm", "adverb", "adj_mixed"],
+    ["I was scared of the", "notes", "note", "but it blends so well here"],
+    ["it resembles a", "adj", "and", "adj", "thing"],
+    ["the", "noun", "of this on initial spray is", "adj_mixed"],
+    ["literally", "season", "in a bottle"],
+    ["the aroma surrounding you will be", "adj_mixed"],
+    ["it definitely has a", "adj", "vibe"],
+    ["a", "adj", "and", "adj_mixed", "noun"],
+    ["a scent that wears", "adj_mixed", "and", "adj_mixed"],
+    ["a", "adj", "twist of", "notes"],
+    ["this scent will evoke", "adj_mixed", "memories"],
+    ["adverb", "adj_mixed", "notes", "scent"],
+    ["a must try for", "notes", "lovers"],
+    ["like a", "thing"],
+    ["mmm simply", "adverb", "adj_mixed"]
 ];
 
 let descriptionStructures = [
@@ -175,13 +189,13 @@ let descriptionStructures = [
     ["opens with a", "tingly sparkle of", "notes"],
     ["it lingers for hours"],
     ["supported by a", "adj", ",", "adj_mixed", "base of", "notes"],
-    ["expresses the quintessence of the Parisian woman"],
+    ["expresses the", "noun", "of the Parisian woman"],
     ["adj_mixed", "enough not to demand major commitment before spritzing"],
     ["will carry you effortlessly into champagne hour"],
     ["not an", "adj_an", "feel but more like", "adj_mixed", "exuberance"],
     ["it never crosses the line into", "adj_mixed", "territory"],
     ["conjures", "adj_mixed", "dreams"],
-    ["a heavenly", "notes", "laced with", "notes", "and", "notes"],
+    ["heavenly", "notes", "laced with", "notes", "and", "notes"],
     ["the", "adj_mixed", "notes", "eases into a", "adj", ",", "adj", "notes"],
     ["this is like a dessert you would eat in a dream"],
     ["like the", "adj_mixed", "smell of", "season"],
@@ -200,5 +214,5 @@ let descriptionStructures = [
     ["you will be", "activity"],
     ["the first impression is that of", "activity"],
     ["reminds us of", "activity"],
-    [""]
+    ["the vibe:", "activity"]
 ];
