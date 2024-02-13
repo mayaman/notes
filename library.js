@@ -75,7 +75,7 @@ let reviewStructures = [
     ["a pure delight"],
     ["so so", "adj_mixed", "and", "adj_mixed"],
     ["what can I say other than wow mmhmmm yes"],
-    ["I cannot stop smelling this, such a", "adj", "memory"],
+    ["I cannot stop smelling this... such a", "adj", "memory"],
     ["definitely a skin scent"],
     ["strong projection and long lasting"],
     ["one for the", "adj_mixed", "girls"],

@@ -1,7 +1,7 @@
 let tokenData = genTokenData(123);
 console.log('TOKEN: ', tokenData);
-// tokenData = {hash: '0xb218cb43bb03fb33ab26f6a5a094aeaead457f16ab45acd32b8a7f1949170832', tokenId: '123000166'};
-document.title = "𝒩𝑜𝓉𝑒𝓈";
+// tokenData = {hash: '0x8b6f0c97934935e7bb149c274f0f9032b0352517e8d1db5b456e0454e942849b', tokenId: '123000531'};
+// tokenData = {hash: '0x1c81219381920aa8e4868337e1e3ac9964fed0dfab57250c8ee55be2313d88c3', tokenId: '123000455'}
 document.body.style.cursor = "default";
 
 let sizeVibe;
@@ -15,8 +15,13 @@ const descSizeOptions = [22, 33, 44, 55, 77, 88, 111];
 const ratio = 8.5 / 11 // 9/16, 16/9, etc etc.
 const w = 1000;
 const h = w / ratio
-const WIDTH = window.innerWidth > window.innerHeight * ratio ? window.innerHeight * ratio : window.innerWidth
-const HEIGHT = window.innerWidth > window.innerHeight * ratio ? window.innerHeight : window.innerWidth / ratio
+// const WIDTH = window.innerWidth > window.innerHeight * ratio ? window.innerHeight * ratio : window.innerWidth;
+// const HEIGHT = window.innerWidth > window.innerHeight * ratio ? window.innerHeight : window.innerWidth / ratio;
+
+document.body.style.width = "100vw";
+document.body.style.height = "100vh";
+const WIDTH = document.body.clientWidth > document.body.clientHeight * ratio ? document.body.clientHeight * ratio : document.body.clientWidth;
+const HEIGHT = document.body.clientWidth > document.body.clientHeight * ratio ? document.body.clientHeight : document.body.clientWidth / ratio;
 const M = Math.min(WIDTH, HEIGHT) / Math.min(w, h);
 const PADDING = 100 * M;
 let yPos = PADDING;
@@ -29,7 +34,7 @@ theme.push("#FFDAEF");
 
 let structures = reviewStructures.concat(descriptionStructures);
 const fonts = ["cursive", "serif", "sans-serif"]
-const fontStyles = ["italic", "none", "none"];
+const fontStyles = ["italic", "none", "none", "none"];
 const fontWeights = ["bold", "none", "none", "none", "none"];
 let main;
 let textAdded = false;
@@ -52,13 +57,16 @@ function scent() {
     main.style.width = WIDTH + "px";
     main.style.height = HEIGHT + "px";
     sizeVibe = M;
-
-    main.style.position = "relative";
+    // main.style.position = "relative";
+    main.style.position = "absolute";
+    main.style.top = "50%";
+    main.style.left = "50%";
+    main.style.transform = "translate(-50%, -50%)";
     main.style.margin = "auto";
 
     const maxLastAttempts = 10;
     let lastAttempts = 0;
-    while (yPos < HEIGHT - PADDING && (lastAttempts < maxLastAttempts)) {
+    while (yPos < HEIGHT - PADDING && (lastAttempts < maxLastAttempts)) { //  
         addText();
         if (!textAdded) {
             lastAttempts++;
@@ -94,20 +102,11 @@ function chooseBackground() {
         theme.splice(theme.indexOf(color3), 1);
         main.style.background = "radial-gradient(" + color1 + " 0%, " + color2 + " 50%, " + color3 + " 100%)";
     }
-
-    // else if (chanceOf(0.26)) {
-    //     // Diagonal gradient
-    //     main.style.background = "linear-gradient(to bottom left, " + color1 + " 0%, " + color1 + " 1%, " + color2 + " 100%)";
-    // } else {
-    //     // Stacked gradient
-    //     const color3 = R.random_choice(theme);
-    //     theme.splice(theme.indexOf(color3), 1);
-    //     main.style.background = "linear-gradient(217deg," + (color1 + "CC") + "," + (color1 + "00") + " 70.71%), linear-gradient(127deg, " + (color2 + "CC") + ", " + (color2 + "00") + " 70.71%),linear-gradient(336deg, " + (color3 + "CC") + ", " + (color3 + "00") + " 70.71%)";
-    // }
 }
 
 function addText() {
     textAdded = false;
+    // addNote();
     if (chanceOf(0.77)) {
         addNote();
     } else {
@@ -115,13 +114,23 @@ function addText() {
     }
 }
 
-scent();
+function findLongestLine(lines) {
+    let longestLine = lines[0];
+    for (let l = 0; l < lines.length; l++) {
+        if (longestLine.length < lines[l].length) {
+            longestLine = lines[l];
+        }
+    }
 
+    return longestLine;
+
+}
 function addDescription() {
     let newFontSize = R.random_choice(descSizeOptions);
 
     let newDescriptionText = generateDescription();
     let lines = phraseSplitter(newDescriptionText);
+    console.log(lines)
     const numLines = lines.length;
     const descFont = R.random_choice(fonts);
     const descStyle = R.random_choice(fontStyles);
@@ -130,49 +139,43 @@ function addDescription() {
 
     let testLine = document.createElement("span");
     main.appendChild(testLine);
-    testLine.innerText = 'groundbreaking';
+    testLine.innerText = findLongestLine(lines);
     testLine.style.fontFamily = descFont;
     testLine.style.fontStyle = descStyle;
     testLine.style.fontWeight = descWeight;
     testLine.style.whiteSpace = 'nowrap';
+    testLine.style.lineHeight = (newFontSize * sizeVibe * 1.2) + "px";
     testLine.style.fontSize = (newFontSize * sizeVibe) + "px";
     let testBoundingBox = testLine.getBoundingClientRect();
     let testHeight = testBoundingBox.height;
     testLine.remove();
 
-    // console.log('*********************: ');
-    // console.log('newDescriptionText: ', newDescriptionText);
-    // console.log(lines);
-    // console.log(testBoundingBox)
-    // console.log('testHeight: ', testHeight);
-    // console.log('testHeight/HEIGHT: ', testHeight/HEIGHT);
-    // console.log('numLines: ', numLines);
-    // console.log('+++');
+    console.log("************");
+    console.log("note: ", newDescriptionText);
+    console.log("yPos + (numLines * testHeight) < (HEIGHT - PADDING)", yPos + (numLines * testHeight * 1.25) < (HEIGHT - PADDING));
+    console.log("testBoundingBox.width <= (WIDTH - PADDING * 2) ", testBoundingBox.width <= (WIDTH - PADDING * 2));
 
-    // console.log('yPos: ', yPos);
-    // console.log('(numLines*testHeight): ', (numLines*testHeight));
-    // console.log('HEIGHT - PADDING: ', HEIGHT - PADDING);
-
-    if (yPos + (numLines * testHeight * 1.25) < (HEIGHT - PADDING) && testBoundingBox.width < (WIDTH - PADDING * 2)) { // (yPos + (numLines * (newFontSize * 1.4))) < (100 - PADDING)
+    if (yPos + (numLines * (newFontSize * sizeVibe * 1.2)) < (HEIGHT - PADDING) && testBoundingBox.width <= (WIDTH - PADDING * 2)) { // (yPos + (numLines * (newFontSize * 1.4))) < (100 - PADDING)
 
         textAdded = true;
 
-        let descShadow = "0 0 " + (newFontSize / 8) + "px" + descColor + ", 0 0 " + (newFontSize) + "px" + descColor;
+        let descShadow = "0 0 " + (newFontSize / 11) + "px" + descColor + ", 0 0 " + (newFontSize / 22) + "px" + descColor;
 
         for (let l = 0; l < lines.length; l++) {
             let currentLine = lines[l];
             let newLine = document.createElement("span");
             main.appendChild(newLine);
-            newLine.addEventListener("mouseover", () => {
-                newLine.style.textShadow = "0 0 " + (newFontSize / 3) + "px white, 0 0 " + (newFontSize * 2) + "px white";
-            });
+            // newLine.addEventListener("mouseover", () => {
+            //     newLine.style.textShadow = "0 0 " + (newFontSize / 3) + "px white, 0 0 " + (newFontSize * 2) + "px white";
+            // });
 
             newLine.innerText = currentLine;
             newLine.style.position = "absolute";
             newLine.style.top = yPos + "px";
             // newLine.style.fontSize = (newFontSize / 100 * sizeVibe) + "px";
             newLine.style.fontSize = (newFontSize * sizeVibe) + "px";
-
+            newLine.style.lineHeight = (newFontSize * sizeVibe * 1.2) + "px";
+            newLine.style.maxWidth = WIDTH - PADDING * 2;
             newLine.style.color = descColor;
 
             // Font
@@ -195,7 +198,14 @@ function addDescription() {
             lineBoundingBox = newLine.getBoundingClientRect();
             lineWidthPX = lineBoundingBox.width;
             lineHeightPX = lineBoundingBox.height;
-            yPos += (lineHeightPX * 1.25);
+
+
+            if (l == lines.length - 1) {
+                // Last one
+                yPos += ((newFontSize * sizeVibe * 1.47));
+            } else {
+                yPos += ((newFontSize * sizeVibe * 1.2));
+            }
         }
     } else {
         textAdded = false;
@@ -205,11 +215,9 @@ function addDescription() {
 function addNote() {
     // Create Notes
     let newNote = document.createElement("span");
-    // let testNote = document.createElement("span");
 
     // Set Text
     let newNoteText, newFontSize;
-    // const noteSizeOptions = [4, 5, 6, 7, 11, 15, 22, 44];
     const noteSizeOptions = [22, 44, 55, 66, 77, 88, 99, 126, 111, 222, 247];
 
     if (chanceOf(0.7)) {
@@ -222,23 +230,13 @@ function addNote() {
     }
 
     newNote.innerText = newNoteText;
-    // newNote.style.whiteSpace = 'nowrap';
-    // testNote.innerText = newNoteText;
 
     // Font Size
-    console.log('newFontSize: ', newFontSize);
-    console.log('newNote.style.fontSize: ', (newFontSize / 100 * sizeVibe));
-
-    // newNote.style.fontSize = (newFontSize / 100 * sizeVibe) + "px";
     newNote.style.fontSize = (newFontSize * sizeVibe) + "px";
-    // testNote.style.fontSize = (newFontSize / 100 * sizeVibe) + "px";
-
-    // Max Width
-    let paddingInPx = (PADDING / 100) * WIDTH;
+    newNote.style.lineHeight = (newFontSize * sizeVibe * 1.2) + "px";
 
     // Font
     newNote.style.fontFamily = R.random_choice(fonts);
-    // testNote.style.fontFamily = newNote.style.fontFamily;
 
     // Style    
     newNote.style.fontStyle = R.random_choice(fontStyles);
@@ -246,12 +244,6 @@ function addNote() {
 
     // Weight
     newNote.style.fontWeight = R.random_choice(fontWeights);
-    // testNote.style.fontWeight = newNote.style.fontWeight;
-
-    // Hide Test Note
-    // testNote.style.visibility = "hidden";
-    // main.appendChild(testNote);
-
     newNote.style.visibility = "hidden";
     main.appendChild(newNote);
 
@@ -260,29 +252,12 @@ function addNote() {
 
     newNote.style.position = "absolute";
     newNote.style.top = yPos + "px";
-
-    newNote.style.maxWidth = WIDTH - paddingInPx * 2;
+    newNote.style.maxWidth = WIDTH - PADDING * 2;
 
     let noteBoundingBox = newNote.getBoundingClientRect();
     let noteWidthPx = noteBoundingBox.width;
     let noteHeightPx = noteBoundingBox.height;
-    let noteWidthP = (noteWidthPx / WIDTH) * 100;
-    let noteHeightP = (noteHeightPx / HEIGHT) * 100;
     newNote.style.position = "absolute";
-
-    // while (newFontSize > 24 && (((noteWidthPx > (WIDTH - PADDING * 2)) || yPos + noteHeightPx < HEIGHT ()))) {
-    //     newFontSize--;
-    //     // newNote.style.fontSize = (newFontSize / 100 * sizeVibe) + "px";
-    //     newNote.style.fontSize = (newFontSize * sizeVibe) + "px";
-
-    //     // testNote.style.fontSize = (newFontSize / 100 * sizeVibe) + "px";
-    //     noteBoundingBox = newNote.getBoundingClientRect();
-    //     noteWidthPx = noteBoundingBox.width;
-    //     noteWidthP = (noteWidthPx / WIDTH) * 100;
-    //     noteHeightPx = noteBoundingBox.height;
-    //     noteHeightP = ((noteHeightPx) / HEIGHT) * 100;
-    // }
-
     newNote.style.textShadow = "0 0 " + (newFontSize / 11) + "px" + noteColor + ", 0 0 " + (newFontSize / 22) + "px" + noteColor;
 
     let leftMax = WIDTH - noteWidthPx - (PADDING);
@@ -292,29 +267,23 @@ function addNote() {
         newNote.style.left = R.random_num(PADDING, leftMax) + "px";
     }
 
-    // newNote.style.left = PADDING + "px";
-    console.log('')
-    console.log(newNote);
-    if (noteWidthPx > (WIDTH - PADDING * 2) || yPos + noteHeightPx > (HEIGHT - PADDING)) { // yPos + noteHeightP > 100 - PADDING || newFontSize < 2
+    console.log("************");
+    console.log("note: ", newNoteText);
+    console.log("noteWidthPx > (WIDTH - PADDING * 2) ", noteWidthPx > (WIDTH - PADDING * 2));
+    console.log("yPos + noteHeightPx > (HEIGHT - PADDING) ", yPos + noteHeightPx > (HEIGHT - PADDING));
+    if (noteWidthPx > (WIDTH - PADDING * 2) || yPos + (noteHeightPx) >= (HEIGHT - PADDING)) { // yPos + noteHeightP > 100 - PADDING || newFontSize < 2 // 
         newNote.remove();
-        // console.log('not adding text');
     } else {
         textAdded = true;
         newNote.style.visibility = "visible";
-        // if (chanceOf(0.8) || yPos > (HEIGHT - PADDING) || numNotes < 2) { // 
-        //     yPos += (noteHeightPx);
-        // } else {
-        //     yPos += (noteHeightPx * R.random_num(1, 2));
-        //     // console.log('adding extra yPos');
-        // }
+        yPos += (noteHeightPx * R.random_num(1, 2)); // 
 
-        yPos += (noteHeightPx * R.random_num(1, 2));
-
-        newNote.addEventListener("mouseover", () => {
-            // newNote.style.textShadow = "0 0 " + (newFontSize / 3) + "px white, 0 0 " + (newFontSize * 2) + "px white";
-            newNote.style.textShadow = "0 0 " + (newFontSize / 11) + "px white, 0 0 " + (newFontSize / 2) + "px white";
-        });
+        // newNote.addEventListener("mouseover", () => {
+        //     newNote.style.textShadow = "0 0 " + (newFontSize / 11) + "px white, 0 0 " + (newFontSize / 2) + "px white";
+        // });
 
         main.appendChild(newNote);
     }
 }
+
+scent();

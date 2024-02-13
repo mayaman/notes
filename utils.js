@@ -55,7 +55,9 @@ class Random {
     }
     // random value in an array of items
     random_choice(list) {
-        return list[this.random_int(0, list.length - 1)];
+        const randomIndex = this.random_int(0, list.length - 1);
+        console.log('RANDOM INDEX: ', randomIndex)
+        return list[randomIndex];
     }
 }
 
@@ -83,7 +85,7 @@ function phraseSplitter(longString) {
     let wordCounter = 0;
 
     while (wordCounter < splitByWord.length) {
-        let chunkSize = R.random_int(0, 3);
+        let chunkSize = R.random_int(1, 3);
         let currentChunk = [];
 
         while (currentChunk.length < chunkSize && wordCounter < splitByWord.length) {
@@ -108,6 +110,10 @@ function phraseSplitter(longString) {
 function generateDescription() {
     let newString = "";
     let structure = randomChoice(structures);
+    console.log('ALL STRUCTURES');
+    console.log(structures);
+    console.log('structure');
+    console.log(structure)
     structures.splice(structures.indexOf(structure), 1);
     for (let i = 0; i < structure.length; i++) {
         let addSpace = true;
