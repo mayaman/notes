@@ -1,5 +1,5 @@
 let tokenData = genTokenData(123);
-console.log('TOKEN: ', tokenData);
+// console.log('TOKEN: ', tokenData);
 // tokenData = {hash: '0x8b6f0c97934935e7bb149c274f0f9032b0352517e8d1db5b456e0454e942849b', tokenId: '123000531'};
 // tokenData = {hash: '0x1c81219381920aa8e4868337e1e3ac9964fed0dfab57250c8ee55be2313d88c3', tokenId: '123000455'}
 document.body.style.cursor = "default";
@@ -10,9 +10,9 @@ let mintNumber = parseInt(tokenData.tokenId) % 1000000;
 let hash = tokenData.hash;
 
 let R = new Random();
-const descSizeOptions = [22, 33, 44, 55, 77, 88, 111];
+const descSizeOptions = [26, 33, 44, 55, 77, 88, 111, 222];
 
-const ratio = 8.5 / 11 // 9/16, 16/9, etc etc.
+const ratio = 8.5 / 11;
 const w = 1000;
 const h = w / ratio
 // const WIDTH = window.innerWidth > window.innerHeight * ratio ? window.innerHeight * ratio : window.innerWidth;
@@ -34,22 +34,19 @@ theme.push("#FFDAEF");
 
 let structures = reviewStructures.concat(descriptionStructures);
 const fonts = ["cursive", "serif", "sans-serif"]
-const fontStyles = ["italic", "none", "none", "none"];
+const fontStyles = ["italic", "none", "none", "none", "none"];
 const fontWeights = ["bold", "none", "none", "none", "none"];
 let main;
 let textAdded = false;
-function chanceOf(chance) {
-    return R.random_bool(chance);
-}
 
 function scent() {
-
     main = document.createElement("main");
     page = document.createElement("article");
     main.style.cursor = "context-menu";
     document.body.appendChild(main);
     main.style.background = R.random_choice(theme);
     console.log("welcome to your new signature scent <3")
+    console.log("by maya man xoxo")
 
     chooseBackground();
 
@@ -57,7 +54,6 @@ function scent() {
     main.style.width = WIDTH + "px";
     main.style.height = HEIGHT + "px";
     sizeVibe = M;
-    // main.style.position = "relative";
     main.style.position = "absolute";
     main.style.top = "50%";
     main.style.left = "50%";
@@ -66,7 +62,7 @@ function scent() {
 
     const maxLastAttempts = 10;
     let lastAttempts = 0;
-    while (yPos < HEIGHT - PADDING && (lastAttempts < maxLastAttempts)) { //  
+    while (yPos < HEIGHT - PADDING && (lastAttempts < maxLastAttempts)) {
         addText();
         if (!textAdded) {
             lastAttempts++;
@@ -79,8 +75,6 @@ function scent() {
 function chooseBackground() {
     const color1 = R.random_choice(theme);
     theme.splice(theme.indexOf(color1), 1);
-
-
 
     const color2 = R.random_choice(theme);
     theme.splice(theme.indexOf(color2), 1);
@@ -106,11 +100,10 @@ function chooseBackground() {
 
 function addText() {
     textAdded = false;
-    // addNote();
     if (chanceOf(0.77)) {
-        addNote();
+        addLine();
     } else {
-        addDescription();
+        addWaterfall();
     }
 }
 
@@ -121,16 +114,13 @@ function findLongestLine(lines) {
             longestLine = lines[l];
         }
     }
-
     return longestLine;
-
 }
-function addDescription() {
-    let newFontSize = R.random_choice(descSizeOptions);
 
+function addWaterfall() {
+    let newFontSize = R.random_choice(descSizeOptions);
     let newDescriptionText = generateDescription();
     let lines = phraseSplitter(newDescriptionText);
-    console.log(lines)
     const numLines = lines.length;
     const descFont = R.random_choice(fonts);
     const descStyle = R.random_choice(fontStyles);
@@ -150,10 +140,10 @@ function addDescription() {
     let testHeight = testBoundingBox.height;
     testLine.remove();
 
-    console.log("************");
-    console.log("note: ", newDescriptionText);
-    console.log("yPos + (numLines * testHeight) < (HEIGHT - PADDING)", yPos + (numLines * testHeight * 1.25) < (HEIGHT - PADDING));
-    console.log("testBoundingBox.width <= (WIDTH - PADDING * 2) ", testBoundingBox.width <= (WIDTH - PADDING * 2));
+    // console.log('!!!~~~****&&&&%%%$$$$$#######');
+    // console.log(lines);
+    // console.log('yPos + (numLines * (newFontSize * sizeVibe * 1.2)): ', yPos + (numLines * (newFontSize * sizeVibe * 1.2)));
+    // console.log('testBoundingBox.width <= (WIDTH - PADDING * 2): ', testBoundingBox.width <= (WIDTH - PADDING * 2));
 
     if (yPos + (numLines * (newFontSize * sizeVibe * 1.2)) < (HEIGHT - PADDING) && testBoundingBox.width <= (WIDTH - PADDING * 2)) { // (yPos + (numLines * (newFontSize * 1.4))) < (100 - PADDING)
 
@@ -172,10 +162,9 @@ function addDescription() {
             newLine.innerText = currentLine;
             newLine.style.position = "absolute";
             newLine.style.top = yPos + "px";
-            // newLine.style.fontSize = (newFontSize / 100 * sizeVibe) + "px";
             newLine.style.fontSize = (newFontSize * sizeVibe) + "px";
             newLine.style.lineHeight = (newFontSize * sizeVibe * 1.2) + "px";
-            newLine.style.maxWidth = WIDTH - PADDING * 2;
+            // newLine.style.maxWidth = WIDTH - PADDING * 2;
             newLine.style.color = descColor;
 
             // Font
@@ -212,13 +201,13 @@ function addDescription() {
     }
 }
 
-function addNote() {
+function addLine() {
     // Create Notes
     let newNote = document.createElement("span");
 
     // Set Text
     let newNoteText, newFontSize;
-    const noteSizeOptions = [22, 44, 55, 66, 77, 88, 99, 126, 111, 222, 247];
+    const noteSizeOptions = [77, 88, 99, 126, 111, 222, 247, 333]; // 22, 44, 55, 66, 
 
     if (chanceOf(0.7)) {
         newNoteText = R.random_choice(notes);
@@ -252,7 +241,6 @@ function addNote() {
 
     newNote.style.position = "absolute";
     newNote.style.top = yPos + "px";
-    newNote.style.maxWidth = WIDTH - PADDING * 2;
 
     let noteBoundingBox = newNote.getBoundingClientRect();
     let noteWidthPx = noteBoundingBox.width;
@@ -266,22 +254,17 @@ function addNote() {
     } else {
         newNote.style.left = R.random_num(PADDING, leftMax) + "px";
     }
-
-    console.log("************");
-    console.log("note: ", newNoteText);
-    console.log("noteWidthPx > (WIDTH - PADDING * 2) ", noteWidthPx > (WIDTH - PADDING * 2));
-    console.log("yPos + noteHeightPx > (HEIGHT - PADDING) ", yPos + noteHeightPx > (HEIGHT - PADDING));
+    // console.log('!!!~~~****&&&&%%%$$$$$#######');
+    // console.log('note: ', newNoteText);
+    // console.log('noteWidthPx > (WIDTH - PADDING * 2): ', noteWidthPx > (WIDTH - PADDING * 2));
+    // console.log('yPos + (noteHeightPx) >= (HEIGHT - PADDING): ', yPos + (noteHeightPx) >= (HEIGHT - PADDING));
+    // console.log('\n\n\n\n');
     if (noteWidthPx > (WIDTH - PADDING * 2) || yPos + (noteHeightPx) >= (HEIGHT - PADDING)) { // yPos + noteHeightP > 100 - PADDING || newFontSize < 2 // 
         newNote.remove();
     } else {
         textAdded = true;
         newNote.style.visibility = "visible";
-        yPos += (noteHeightPx * R.random_num(1, 2)); // 
-
-        // newNote.addEventListener("mouseover", () => {
-        //     newNote.style.textShadow = "0 0 " + (newFontSize / 11) + "px white, 0 0 " + (newFontSize / 2) + "px white";
-        // });
-
+        yPos += (noteHeightPx * R.random_num(1, 2));
         main.appendChild(newNote);
     }
 }

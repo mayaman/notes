@@ -55,10 +55,12 @@ class Random {
     }
     // random value in an array of items
     random_choice(list) {
-        const randomIndex = this.random_int(0, list.length - 1);
-        console.log('RANDOM INDEX: ', randomIndex)
-        return list[randomIndex];
+        return list[this.random_int(0, list.length - 1)];
     }
+}
+
+function chanceOf(chance) {
+    return R.random_bool(chance);
 }
 
 function genTokenData(projectNum) {
@@ -110,10 +112,6 @@ function phraseSplitter(longString) {
 function generateDescription() {
     let newString = "";
     let structure = randomChoice(structures);
-    console.log('ALL STRUCTURES');
-    console.log(structures);
-    console.log('structure');
-    console.log(structure)
     structures.splice(structures.indexOf(structure), 1);
     for (let i = 0; i < structure.length; i++) {
         let addSpace = true;
@@ -178,8 +176,6 @@ function generateDescription() {
         const happyEnding = randomChoice(punctuation);
         newString += happyEnding;
         punctuation.splice(punctuation.indexOf(happyEnding), 1);
-
-        // console.log('newDescriptionText: ', newDescriptionText);
     }
 
     return newString;
